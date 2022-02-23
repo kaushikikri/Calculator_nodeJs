@@ -1,0 +1,102 @@
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            background-color: rgb(237, 241, 245);
+            color: rgb(13, 14, 13);
+        }
+
+        .container {
+            margin: auto;
+            width: 90%;
+            margin-top: 1rem;
+            padding: 0 2rem;
+        }
+
+        h2 {
+            font-family: Lucida Console, Monaco, Monospace;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .tbl {
+            width: 100%;
+            margin-top: 2rem;
+            border-collapse: collapse;
+            border-spacing: 4;
+
+        }
+
+        .tbl th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #04AA6D;
+            color: white;
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        .tbl tr:nth-child(odd) {
+            background-color: #bfc7c0;
+        }
+
+        .tbl tr:hover {
+            background-color: #ddd;
+        }
+
+        .tbl td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        @media screen and (max-width: 750px) {
+            .container {
+                width: 100%;
+                height: 100%;
+            }
+        }
+    </style>
+</head>
+<div class="container">
+    <h2>Calculated History</h2>
+
+
+    <table class="tbl">
+        <tr>
+            <th>Operand 1 </th>
+            <th>Operand 2</th>
+            <th>Operator</th>
+            <th>Result</th>
+            <th>Data & Time</th>
+        </tr>
+        <% items.forEach(function(data){ %>
+            <tr>
+                <td>
+                    <%- data.first %>
+                </td>
+                <td>
+                    <%- data.second %>
+                </td>
+                <td>
+                    <%-data.operator %>
+                </td>
+                <td>
+                    <%-data.result %>
+                </td>
+                <td>
+                    <%-data.time %>
+                </td>
+
+            </tr>
+            <% }); %>
+    </table>
+</div>
