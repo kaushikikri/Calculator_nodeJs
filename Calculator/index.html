@@ -136,6 +136,21 @@
         function getval(val) {
             document.getElementById("resultbtn").value = val;
         }
+        window.localStorage.setItem('openOnePage', Date.now());
+        var onLocalStorageEvent = function (e) {
+
+            if (e.key == "openOnePage") {
+
+                window.localStorage.setItem('duplicate', Date.now());
+            }
+
+            if (e.key == "duplicate") {
+                alert("You already opened this URL on another tab.");
+                window.location.href = "index.html";
+                return false;
+            }
+
+        }; window.addEventListener('storage', onLocalStorageEvent, false);
     </script>
 </body>
 
