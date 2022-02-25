@@ -2,6 +2,7 @@ const express = require('express');
 const bodyparse = require('body-parser');
 const app = express();
 
+
 // connecting to db
 const client = require('./db');
 client.connect();
@@ -19,7 +20,9 @@ app.post('/resl', (req, res) => {
     const n2 = Number(req.body.num2);
     if (req.body.res == '+') {
         const result = n1 + n2;
-        res.send(' ' + result);
+        // res.send(' ' + result.toExponential());
+        res.send(' ' + BigInt(result));
+        // res.send(' ' + result.toFixed());      ------Max limit is 20 in toFixed
         // const data = {
         //     first: String(n1),
         //     second: String(n2),
@@ -39,7 +42,7 @@ app.post('/resl', (req, res) => {
     }
     else if (req.body.res == '-') {
         const result = n1 - n2;
-        res.send(' ' + result);
+        res.send(' ' + BigInt(result));
         client.query("Insert into calculator values('" + n1 + "','" + n2 + "','" + req.body.res + "','" + result + "',current_timestamp)",
             (err, result) => {
                 if (!err) {
@@ -53,7 +56,7 @@ app.post('/resl', (req, res) => {
     }
     else if (req.body.res == '*') {
         const result = n1 * n2;
-        res.send(' ' + result);
+        res.send(' ' + BigInt(result));
         client.query("Insert into calculator values('" + n1 + "','" + n2 + "','" + req.body.res + "','" + result + "',current_timestamp)",
             (err, result) => {
                 if (!err) {
@@ -67,7 +70,7 @@ app.post('/resl', (req, res) => {
     }
     else if (req.body.res == '/') {
         const result = n1 / n2;
-        res.send(' ' + result);
+        res.send(' ' + BigInt(result));
         client.query("Insert into calculator values('" + n1 + "','" + n2 + "','" + req.body.res + "','" + result + "',current_timestamp)",
             (err, result) => {
                 if (!err) {
@@ -81,7 +84,7 @@ app.post('/resl', (req, res) => {
     }
     else if (req.body.res == '%') {
         const result = n1 % n2;
-        res.send(' ' + result);
+        res.send(' ' + BigInt(result));
         client.query("Insert into calculator values('" + n1 + "','" + n2 + "','" + req.body.res + "','" + result + "',current_timestamp)",
             (err, result) => {
                 if (!err) {

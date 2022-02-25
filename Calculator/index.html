@@ -94,6 +94,12 @@
                 height: 100%;
             }
         }
+
+        a {
+            color: rgb(44, 36, 90);
+            text-decoration: none;
+            font-size: 15px;
+        }
     </style>
 </head>
 
@@ -122,11 +128,12 @@
 
             <br>
             <label for="res">Result</label>
-            <iframe src="" id="frm" frameborder="0" name="result" width="100%" height="30"></iframe>
-            <a href="/hs" name="his">History</a>
+            <iframe src="" id="frm" frameborder="0" name="result" width="100%" height="50"></iframe>
+            <a href="/hs" name="his">Show History</a>
 
         </div>
     </div>
+
     <script>
         document.getElementById("resetbtn").addEventListener("click", clear);
         function clear() {
